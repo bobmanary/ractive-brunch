@@ -21,5 +21,5 @@ module.exports = class RactiveCompiler
 
   include: [
     (sysPath.join __dirname, '..', 'vendor',
-      'Ractive.runtime-0.3.6.js')
+      'ractive.runtime.js')
   ]

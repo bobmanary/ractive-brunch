@@ -1,4 +1,4 @@
-Ractive = require('Ractive');
+Ractive = require('ractive');
 
 describe('Plugin', function() {
   var plugin;
