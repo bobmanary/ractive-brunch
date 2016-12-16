@@ -1,6 +1,6 @@
 Ractive = require 'ractive'
-umd = require 'umd-wrapper'
 sysPath = require 'path'
+umd = require 'umd-wrapper'
 
 module.exports = class RactiveCompiler
   brunchPlugin: yes
@@ -13,13 +13,15 @@ module.exports = class RactiveCompiler
 
   compile: (data, path, callback) ->
     try
-      result = umd JSON.stringify Ractive.parse data
+      result = umd(JSON.stringify(Ractive.parse(data)))
     catch err
       error = err
     finally
       callback error, result
 
   include: [
-    (sysPath.join __dirname, '..', 'vendor',
-      'ractive.runtime.js')
+    sysPath.join(
+      sysPath.parse(require.resolve('ractive')).dir,
+      'ractive.runtime.js'
+    )
   ]
